@@ -1,0 +1,25 @@
+<div class= "container">
+<h1>Here are the details of <%= @list.name %></h1>
+
+<div class= "tiles d-flex row row-cols-1 row-cols-md-3 g-4">
+  <% @list.bookmarks.each do |bookmark| %>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src= '<%= bookmark.movie.poster_url %>' class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text"><%= bookmark.movie.title %> </p>
+          <p><%= link_to "Delete this bookmark", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<hr>
+<h2>Create a new bookmark:</h2>
+<%= simple_form_for [@list, @bookmark] do |f| %>
+<%= f.input :comment %>
+<%= f.association :movie  %>
+<%= f.submit %>
+<% end %>
+
+</div>

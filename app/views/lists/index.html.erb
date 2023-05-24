@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>My Lists</h1>
+  <% @lists.each do |list| %>
+  <p><%= link_to list.name, list_path(list) %>
+  <%= link_to "Add a new bookmark to this list", new_list_bookmark_path(list) %></p>
+  <% end %>
+ </div>
+
+
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
