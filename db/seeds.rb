@@ -11,15 +11,20 @@
 # Movie.create(title: "Titanic", overview: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic.", poster_url: "https://image.tmdb.org/t/p/original/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg", rating: 7.9)
 # Movie.create(title: "Ocean's Eight", overview: "Debbie Ocean, a criminal mastermind, gathers a crew of female thieves to pull off the heist of the century.", poster_url: "https://image.tmdb.org/t/p/original/MvYpKlpFukTivnlBhizGbkAe3v.jpg", rating: 7.0)
 
-Movie.destroy_all
+# Movie.destroy_all
 
 require 'open-uri'
 
-url = 'https://tmdb.lewagon.com/movie/top_rated'
-response = URI.open(url).read
-new_response = JSON.parse(response)
+# url = 'https://tmdb.lewagon.com/movie/top_rated'
+# response = URI.open(url).read
+# new_response = JSON.parse(response)
 
-new_response["results"].each do |result|
-movie = Movie.create(title: result["original_title"], overview: result["overview"], poster_url: "https://image.tmdb.org/t/p/w500/"+result["poster_path"], rating: result["vote_average"] )
-puts movie
-end
+# new_response["results"].each do |result|
+# movie = Movie.create(title: result["original_title"], overview: result["overview"], poster_url: "https://image.tmdb.org/t/p/w500/"+result["poster_path"], rating: result["vote_average"] )
+# puts movie
+# end
+
+list = List.create(name: "Romance")
+file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
+list.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+list.save
